@@ -1,0 +1,67 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "quick-ui-template",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-10-08",
+	"compatibility_flags": ["nodejs_compat"],
+	"workers_dev": true,
+	"placement": {
+		"mode": "smart"
+	},
+	"observability": {
+		"enabled": true
+	},
+	"dispatch_namespaces": [
+		{
+			"binding": "dispatcher",
+			"namespace": "internal-sites",
+			"remote": true
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "quick-ui-d1",
+			"database_id": "a5b44a8b-4fec-49da-9ae3-63905f66ae87"
+		}
+	],
+	"vars": {
+		"DISPATCH_NAMESPACE_NAME": "quick-ui-name",
+		"SITE_DOMAIN": "quick-ui.anigok.com",
+		"DEPLOY_PATH": "/deploy",
+		"ACCOUNT_ID": "115868cccd088ee294b2c810c578f12d"
+	},
+	"access": {
+		"dev": {
+			"aud": "local-dev-aud",
+			"identity": {
+				"email": "local-dev@localhost"
+			}
+		}
+	},
+	"env": {
+		"local": {
+			"dispatch_namespaces": [
+				{
+					"binding": "dispatcher",
+					"namespace": "internal-sites",
+					"remote": true
+				}
+			],
+			"d1_databases": [
+				{
+					"binding": "DB",
+					"database_name": "internal-sites-platform-local",
+					"database_id": "00000000-0000-0000-0000-000000000000"
+				}
+			],
+			"vars": {
+				"DISPATCH_NAMESPACE_NAME": "internal-sites",
+				"SITE_DOMAIN": "internal-company.com",
+				"DEPLOY_PATH": "/deploy",
+				"ACCOUNT_ID": ""
+			}
+		}
+	},
+	"upload_source_maps": true
+}
